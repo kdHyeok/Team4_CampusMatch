@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀즈 Match - 결과</title>
+    <link rel="stylesheet" href="result-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="logo-teams-match.svg" alt="팀즈 Match" class="logo">
+        </header>
+
+        <main class="result-section">
+            <!-- 사용자 이름 -->
+            <div class="user-greeting">
+                <h1><span id="userName"></span>님의 유형은?</h1>
+            </div>
+
+            <!-- 결과 타입 -->
+            <div class="result-type">
+                <div class="type-badge" id="resultType">SDAO</div>
+                <h2 class="type-name" id="typeName">능동적 전문가형</h2>
+            </div>
+
+            <!-- 결과 설명 -->
+            <div class="result-description">
+                <div class="description-card">
+                    <h3>🎯 당신의 특징</h3>
+                    <p id="typeDescription"></p>
+                </div>
+
+                <div class="description-card">
+                    <h3>📚 추천 활동</h3>
+                    <ul id="recommendedActivities"></ul>
+                </div>
+            </div>
+
+            <!-- 답변 상세 내역 -->
+            <div class="answer-details">
+                <h3>📊 선택 내역</h3>
+                <div class="answer-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">관계 지향 (S)</span>
+                        <div class="summary-bar">
+                            <div class="summary-fill" id="barS"></div>
+                            <span class="summary-count" id="countS">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">개인 지향 (I)</span>
+                        <div class="summary-bar">
+                            <div class="summary-fill" id="barI"></div>
+                            <span class="summary-count" id="countI">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">전공 심화 (D)</span>
+                        <div class="summary-bar">
+                            <div class="summary-fill" id="barD"></div>
+                            <span class="summary-count" id="countD">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">경험 확장 (W)</span>
+                        <div class="summary-bar">
+                            <div class="summary-fill" id="barW"></div>
+                            <span class="summary-count" id="countW">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">능동 탐색 (A)</span>
+                        <div class="summary-bar">
+                            <div class="summary-fill" id="barA"></div>
+                            <span class="summary-count" id="countA">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">안정 관리 (R)</span>
+                        <div class="summary-bar">
+                            <div class="summary-fill" id="barR"></div>
+                            <span class="summary-count" id="countR">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">성과 중심 (O)</span>
+                        <div class="summary-bar">
+                            <div class="summary-fill" id="barO"></div>
+                            <span class="summary-count" id="countO">0</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">성장 중심 (P)</span>
+                        <div class="summary-bar">
+                            <div class="summary-fill" id="barP"></div>
+                            <span class="summary-count" id="countP">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 액션 버튼 -->
+            <div class="action-buttons">
+                <button class="btn-primary" id="viewRecommendations">
+                    맞춤 프로그램 보기
+                </button>
+                <button class="btn-secondary" id="retakeTest">
+                    다시 테스트하기
+                </button>
+                <button class="btn-secondary" id="shareResult">
+                    결과 공유하기
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="result-data.js"></script>
+    <script src="result-script.js"></script>
+</body>
+</html>
