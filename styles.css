@@ -28,14 +28,41 @@ body {
     padding: 1rem;
 }
 
-/* 헤더 영역 */
+/* 헤더 스타일 */
 .header {
-    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    gap: 1rem;
+}
+
+.jju-logo {
+    height: 40px;
+    width: auto;
 }
 
 .logo {
-    width: clamp(120px, 20vw, 180px);
-    height: auto;
+    height: 50px;
+    width: auto;
+}
+
+/* 태블릿 이상 */
+@media (min-width: 768px) {
+    .header {
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+    
+    .jju-logo {
+        height: 45px;
+    }
+    
+    .logo {
+        height: 55px;
+    }
 }
 
 /* 메인 컨텐츠 */

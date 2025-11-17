@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캠퍼스 Match - 성향 진단</title>
+    <link rel="stylesheet" href="question-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 상단 헤더 -->
+        <header class="header">
+            <button class="back-button" id="backButton" aria-label="이전으로">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <img src="images/logos/logo_CampusMatch.png" alt="캠퍼스Match" class="logo">
+        </header>
+
+        <!-- 진척도 바 -->
+        <div class="progress-section">
+            <div class="progress-container">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+                <div class="progress-character" id="progressCharacter">
+                    <img src="images/icons/Progress_Icon.png" alt="진척도 캐릭터" class="icon-image">
+                </div>
+            </div>
+            <div class="progress-text" id="progressText">1 / 12</div>
+        </div>
+
+        <!-- 질문 영역 -->
+        <main class="question-section">
+            <div class="question-image">
+                <img id="questionImg" src="" alt="상황 이미지">
+            </div>
+            <!-- 공제이 말풍선 -->
+            <div class="gongjay-speech">
+                <p class="gongjay-message" id="gongjayMessage"></p>
+            </div>
+
+
+            <!-- 선택지 -->
+            <div class="choices">
+                <button class="choice-button" id="choiceA" data-value="">
+                    <span class="choice-label">(A)</span>
+                    <span class="choice-text"></span>
+                </button>
+                <button class="choice-button" id="choiceB" data-value="">
+                    <span class="choice-label">(B)</span>
+                    <span class="choice-text"></span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="question-data.js"></script>
+    <script src="question-script.js"></script>
+</body>
+</html>

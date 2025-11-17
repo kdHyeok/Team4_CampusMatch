@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="전주대학교 학생 맞춤형 프로그램 추천 시스템">
+    <title>캠퍼스 Match - 전주대학교</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="images/logos/jju-logo.png" alt="전주대학교" class="jju-logo">
+            <img src="images/logos/logo_CampusMatch.png" alt="캠퍼스Match" class="logo">
+        </header>
+
+        <main class="main-content">
+            <div class="hero-section">                
+                <h2 class="subtitle">
+                    '공제이'와 함께하는 <br>
+                    나만의 제이제이 찾기
+                </h2>
+
+                <div class="illustration">
+                    <img src="images/index_background_(2).png" alt="대학생 일러스트" class="hero-image">
+                </div>
+
+                <div class="input-section">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="nameInput" 
+                            placeholder="이름을 입력해주세요."
+                            class="name-input"
+                            aria-label="이름 입력"
+                        >
+                    </div>
+                    
+                    <button class="start-button" id="startButton" aria-label="시작하기">
+                        <span class="button-text">Start</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

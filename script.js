@@ -30,13 +30,9 @@ startButton.addEventListener('click', handleStart);
 
 function handleStart() {
     if (!validateInput()) {
-        // 입력 필드에 포커스
         nameInput.focus();
-        
-        // 애니메이션으로 사용자에게 피드백
         nameInput.classList.add('shake');
         setTimeout(() => nameInput.classList.remove('shake'), 500);
-        
         return;
     }
     
@@ -46,29 +42,27 @@ function handleStart() {
     startButton.classList.add('loading');
     startButton.innerHTML = '<span class="button-text">로딩중...</span>';
     
-    // 사용자 데이터 저장 (sessionStorage)
+    // 사용자 데이터 저장
     sessionStorage.setItem('userName', userName);
     
-    // question.html로 이동 (첫 번째 질문)
+    // 인트로 페이지로 이동 (수정됨!)
     setTimeout(() => {
-        window.location.href = 'question.html?q=1';
+        window.location.href = 'intro.html';
     }, 500);
 }
 
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', () => {
-    // 이전 세션 데이터 확인
     const savedName = sessionStorage.getItem('userName');
     if (savedName) {
         nameInput.value = savedName;
         validateInput();
     }
     
-    // 입력 필드에 자동 포커스
     nameInput.focus();
 });
 
-// 흔들림 애니메이션을 위한 CSS 추가
+// 애니메이션 CSS
 const style = document.createElement('style');
 style.textContent = `
     @keyframes shake {

@@ -1,0 +1,231 @@
+/* 기본 리셋 및 변수 설정 */
+:root {
+    --primary-blue: #4A90FF;
+    --primary-yellow: #FFD700;
+    --text-white: #FFFFFF;
+    --text-dark: #333333;
+    --input-bg: #F5F5F5;
+    --border-radius: 12px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: linear-gradient(135deg, #4A90FF 0%, #6BB6FF 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* 헤더 스타일 */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    gap: 1rem;
+}
+
+.jju-logo {
+    height: 40px;
+    width: auto;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* 태블릿 이상 */
+@media (min-width: 768px) {
+    .header {
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+    
+    .jju-logo {
+        height: 45px;
+    }
+    
+    .logo {
+        height: 55px;
+    }
+}
+
+/* 메인 컨텐츠 */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 100px);
+}
+
+.hero-section {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* 타이틀 */
+.title {
+    margin-bottom: 1.5rem;
+}
+
+.brand {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 900;
+    color: var(--primary-yellow);
+    text-shadow: 3px 3px 0 #FF6B35, -1px -1px 0 var(--text-white);
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: 700;
+    color: var(--text-white);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* 일러스트레이션 */
+.illustration {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+}
+
+/* 입력 섹션 */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.input-wrapper {
+    background: var(--text-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.name-input {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    border: none;
+    outline: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: transparent;
+}
+
+.name-input::placeholder {
+    color: #999;
+}
+
+.start-button {
+    background: linear-gradient(135deg, var(--primary-yellow) 0%, #FFA500 100%);
+    color: var(--text-dark);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 1.2rem 2rem;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.start-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+.start-button:active {
+    transform: translateY(0);
+}
+
+.button-arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.start-button:hover .button-arrow {
+    transform: translateX(5px);
+}
+
+/* 태블릿 */
+@media (min-width: 768px) {
+    .container {
+        padding: 2rem;
+    }
+    
+    .input-section {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .input-wrapper {
+        flex: 1;
+    }
+    
+    .start-button {
+        flex-shrink: 0;
+        width: auto;
+        min-width: 150px;
+    }
+}
+
+/* 데스크톱 */
+@media (min-width: 1024px) {
+    .hero-section {
+        max-width: 800px;
+    }
+    
+    .subtitle {
+        margin-bottom: 3rem;
+    }
+}
+
+/* 접근성 및 성능 최적화 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* 로딩 상태 */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}

@@ -105,6 +105,11 @@ body {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
+.icon-image {
+    height: 30px;
+    width: auto;
+}
+
 .progress-text {
     text-align: center;
     color: var(--text-gray);
@@ -225,4 +230,34 @@ body {
 
 .question-section {
     animation: fadeIn 0.5s ease;
+}
+
+/* 공제이 말풍선 */
+.gongjay-speech {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 3px solid var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(74, 144, 255, 0.2);
+}
+
+.gongjay-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.gongjay-message {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.choice-label {
+    font-weight: 900;
+    color: var(--primary-blue);
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
 }
