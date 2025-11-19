@@ -3,7 +3,7 @@ const questionsData = [
     {
         id: 1,
         type: 'S/I',
-        image: 'images/questions/q1-classroom.png',
+        image: 'images/questions/q1-classroom.webp',
         gongjay: '드디어 첫 수업! 강의실에 도착했는데 아는 사람이 한 명도 없네. 넌 어떡할래?',
         choiceA: {
             text: '일단 맨 앞자리는 부담스럽고... 조용히 구석 자리에 앉아 폰을 본다.',
@@ -17,7 +17,7 @@ const questionsData = [
     {
         id: 2,
         type: 'O/P',
-        image: 'images/questions/q2-assignment.png',
+        image: 'images/questions/q2-assignment.webp',
         gongjay: '교양 수업에서 "자유 주제" 리포트 과제가 나왔어. 어떤 주제를 고를래?',
         choiceA: {
             text: '무조건 A+ 받기 좋은 주제. 쉬우면서 그럴듯한 주제를 찾아본다.',
@@ -31,7 +31,7 @@ const questionsData = [
     {
         id: 3,
         type: 'D/W',
-        image: 'images/questions/q3-library.png',
+        image: 'images/questions/q3-library.webp',
         gongjay: '도서관에서 책을 빌리려고 하는데... 뭘 고를까?',
         choiceA: {
             text: '내 전공 분야의 심화 서적이나 교수님이 추천하신 입문 도서!',
@@ -45,7 +45,7 @@ const questionsData = [
     {
         id: 4,
         type: 'S/I',
-        image: 'images/questions/q4-lunch.png',
+        image: 'images/questions/q4-lunch.webp',
         gongjay: '수업이 끝나고 배가 고픈데... 복도에서 마주친 과 선배가 "신입생이구나? 밥 사줄게!"라고 하네?',
         choiceA: {
             text: '감사합니다! 밥 먹으면서 학교 꿀팁이나 동아리 정보를 물어봐야지.',
