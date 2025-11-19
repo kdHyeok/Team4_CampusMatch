@@ -7,28 +7,29 @@ class ResultManager {
     }
     
     init() {
-        // URL 파라미터에서 데이터 가져오기
         const params = new URLSearchParams(window.location.search);
         this.resultType = params.get('type') || 'ODS';
         const encodedAnswers = params.get('a');
         
-        // sessionStorage에서 사용자 이름 가져오기
         this.userName = sessionStorage.getItem('userName') || '사용자';
-        
-        // 답변 디코딩
         this.answers = this.decodeAnswers(encodedAnswers);
         
-        // 결과 표시
+        this.preloadCharacterImage();
         this.displayResult();
-        this.displayAnswerStats();
         this.setupEventListeners();
+    }
+    
+    preloadCharacterImage() {
+        const typeData = personalityTypes[this.resultType];
+        if (typeData && typeData.characterImage) {
+            const img = new Image();
+            img.src = typeData.characterImage;
+        }
     }
     
     decodeAnswers(encoded) {
         if (!encoded) return [];
-        
         try {
-            // 36진수를 이진 문자열로 변환
             let binaryStr = parseInt(encoded, 36).toString(2);
             binaryStr = binaryStr.padStart(15, '0');
             
@@ -58,18 +59,22 @@ class ResultManager {
     displayResult() {
         const typeData = personalityTypes[this.resultType];
         
-        // 사용자 이름 표시
-        document.getElementById('userName').textContent = this.userName;
+        document.getElementById('userNameDisplay').textContent = this.userName;
+        document.getElementById('typeTitle').textContent = typeData.title;
+        document.getElementById('typeBadge').textContent = typeData.nickname;
+        document.getElementById('typeCode').textContent = this.resultType;
         
-        // 결과 타입 표시
-        document.getElementById('resultType').textContent = this.resultType;
-        document.getElementById('typeName').textContent = typeData.name;
-        document.getElementById('typeNickname').textContent = typeData.nickname;
+        const characterImg = document.getElementById('resultCharacter');
+        characterImg.src = typeData.characterImage;
+        characterImg.alt = typeData.nickname;
         
-        // 설명 표시
-        document.getElementById('typeDescription').textContent = typeData.description;
+        characterImg.onerror = () => {
+            console.warn(`캐릭터 이미지 로드 실패: ${typeData.characterImage}`);
+            characterImg.src = 'images/characters/default-character.png';
+        };
         
-        // 강점 표시
+        document.getElementById('descriptionText').textContent = typeData.description;
+        
         const strengthsList = document.getElementById('strengthsList');
         strengthsList.innerHTML = '';
         typeData.strengths.forEach(strength => {
@@ -78,7 +83,6 @@ class ResultManager {
             strengthsList.appendChild(li);
         });
         
-        // 약점 표시
         const weaknessesList = document.getElementById('weaknessesList');
         weaknessesList.innerHTML = '';
         typeData.weaknesses.forEach(weakness => {
@@ -87,107 +91,149 @@ class ResultManager {
             weaknessesList.appendChild(li);
         });
         
-        // 기본 추천 프로그램
-        const baseList = document.getElementById('basePrograms');
-        baseList.innerHTML = '';
+        const baseProgramList = document.getElementById('baseProgramList');
+        baseProgramList.innerHTML = '';
         typeData.basePrograms.forEach(program => {
             const li = document.createElement('li');
             li.textContent = program;
-            baseList.appendChild(li);
+            baseProgramList.appendChild(li);
         });
         
-        // 접근 추천 프로그램
-        const approachList = document.getElementById('approachPrograms');
-        approachList.innerHTML = '';
-        typeData.approachPrograms.forEach(program => {
+        const alternativeProgramList = document.getElementById('alternativeProgramList');
+        alternativeProgramList.innerHTML = '';
+        typeData.alternativePrograms.forEach(program => {
             const li = document.createElement('li');
             li.textContent = program;
-            approachList.appendChild(li);
-        });
-        
-        // 회피 추천 프로그램
-        const avoidList = document.getElementById('avoidancePrograms');
-        avoidList.innerHTML = '';
-        typeData.avoidancePrograms.forEach(program => {
-            const li = document.createElement('li');
-            li.textContent = program;
-            avoidList.appendChild(li);
-        });
-    }
-    
-    displayAnswerStats() {
-        // 각 선택지별 카운트
-        const counts = {
-            'S': 0, 'I': 0,
-            'D': 0, 'W': 0,
-            'O': 0, 'P': 0
-        };
-        
-        this.answers.forEach(answer => {
-            if (counts.hasOwnProperty(answer)) {
-                counts[answer]++;
-            }
-        });
-        
-        // 각 항목별 표시
-        Object.keys(counts).forEach(key => {
-            const count = counts[key];
-            const percentage = (count / 15) * 100;
-            
-            // 카운트 표시
-            const countElement = document.getElementById(`count${key}`);
-            if (countElement) {
-                countElement.textContent = count;
-            }
-            
-            // 바 애니메이션
-            const barElement = document.getElementById(`bar${key}`);
-            if (barElement) {
-                setTimeout(() => {
-                    barElement.style.width = `${percentage}%`;
-                }, 100);
-            }
+            alternativeProgramList.appendChild(li);
         });
     }
     
     setupEventListeners() {
-        // 맞춤 프로그램 보기
-        document.getElementById('viewRecommendations').addEventListener('click', () => {
-            alert('맞춤 프로그램 페이지로 이동합니다.');
-            // window.location.href = `recommendations.html?type=${this.resultType}`;
+        document.getElementById('viewPrograms').addEventListener('click', () => {
+            alert('프로그램 상세 페이지로 이동합니다.');
         });
         
-        // 다시 테스트하기
         document.getElementById('retakeTest').addEventListener('click', () => {
             sessionStorage.clear();
             window.location.href = 'index.html';
         });
         
-        // 결과 공유하기
+        // 스크린샷 공유 기능으로 변경
         document.getElementById('shareResult').addEventListener('click', () => {
-            this.shareResult();
+            this.captureAndShare();
+        });
+        
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = 'index.html';
         });
     }
     
-    shareResult() {
+    async captureAndShare() {
+        const loadingEl = document.getElementById('screenshotLoading');
+        const captureArea = document.getElementById('captureArea');
         const typeData = personalityTypes[this.resultType];
-        const shareText = `나의 대학생 유형은 "${typeData.name} (${this.resultType})"입니다! 팀즈 Match에서 당신의 유형도 확인해보세요!`;
         
-        if (navigator.share) {
-            navigator.share({
-                title: '팀즈 Match 결과',
-                text: shareText,
-                url: window.location.href
-            }).catch(err => console.log('공유 취소:', err));
+        // 애니메이션이 있는 요소 가져오기
+        const characterImg = document.getElementById('resultCharacter');
+        
+        try {
+            // 1. 로딩 표시
+            loadingEl.style.display = 'flex';
+            
+            // 2. 캡처 준비: 버튼 숨기기 및 애니메이션 정지
+            captureArea.classList.add('capturing');
+            if (characterImg) {
+                characterImg.style.animation = 'none'; // 캡처 중 흔들림 방지
+                characterImg.style.transform = 'translateY(0)'; // 정위치 고정
+            }
+            
+            // 3. 렌더링 안정화를 위한 대기 (시간을 조금 늘림)
+            await new Promise(resolve => setTimeout(resolve, 300));
+            
+            // 4. html2canvas로 캡처
+            const canvas = await html2canvas(captureArea, {
+                backgroundColor: '#4A90FF', // 배경색 강제 지정 (투명 방지)
+                scale: 2,
+                useCORS: true, // 서버 환경 필수
+                allowTaint: true, // 로컬 환경에서 도움이 될 수 있음
+                logging: true, // 디버깅을 위해 true로 변경하여 콘솔 확인
+                width: captureArea.offsetWidth,
+                height: captureArea.offsetHeight,
+                // 캡처 시 제외할 요소들을 확실하게 무시
+                ignoreElements: (element) => {
+                    if (element.id === 'screenshotLoading') return true;
+                    return false;
+                }
+            });
+            
+            // 5. 복구: 버튼 다시 표시 및 애니메이션 재개
+            captureArea.classList.remove('capturing');
+            if (characterImg) {
+                characterImg.style.animation = ''; // 스타일 제거하여 CSS 애니메이션 복구
+            }
+            
+            // 6. 결과 처리
+            canvas.toBlob(async (blob) => {
+                if (!blob) {
+                    throw new Error('Blob 생성 실패');
+                }
+            
+                const fileName = `CampusMatch_${typeData.nickname}_${this.userName}.png`;
+                
+                // Web Share API 시도
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [new File([blob], fileName, { type: 'image/png' })] })) {
+                    try {
+                        const file = new File([blob], fileName, { type: 'image/png' });
+                        await navigator.share({
+                            title: '캠퍼스 Match 결과',
+                            text: `나는 "${typeData.nickname} (${this.resultType})"!`,
+                            files: [file]
+                        });
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            this.downloadImage(blob, fileName);
+                        }
+                    }
+                } else {
+                    this.downloadImage(blob, fileName);
+                }
+                
+                loadingEl.style.display = 'none';
+            }, 'image/png');
+            
+        } catch (error) {
+            console.error('상세 에러 로그:', error); // 콘솔에서 에러 확인
+            alert('이미지 생성에 실패했습니다. (서버에서 실행 중인지 확인해주세요)');
+            
+            // 에러 발생 시에도 UI 복구
+            captureArea.classList.remove('capturing');
+            if (characterImg) characterImg.style.animation = '';
+            loadingEl.style.display = 'none';
+        }
+    }
+    
+    // 이미지 다운로드 함수
+    downloadImage(blob, fileName) {
+        // IE 10, 11 지원
+        if (window.navigator.msSaveBlob) {
+            window.navigator.msSaveBlob(blob, fileName);
         } else {
-            navigator.clipboard.writeText(shareText + '\n' + window.location.href)
-                .then(() => alert('결과가 클립보드에 복사되었습니다!'))
-                .catch(err => console.error('복사 실패:', err));
+            // 현대 브라우저
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            // 다운로드 완료 알림
+            alert('결과 이미지가 다운로드되었습니다!');
         }
     }
 }
 
-// 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', () => {
     new ResultManager();
 });
