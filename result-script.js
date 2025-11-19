@@ -62,25 +62,20 @@ class ResultManager {
     displayResult() {
         const typeData = personalityTypes[this.resultType];
         
-        // 사용자 정보
         document.getElementById('userNameDisplay').textContent = this.userName;
         document.getElementById('typeTitle').textContent = typeData.title;
         document.getElementById('typeBadge').textContent = typeData.nickname;
-        document.getElementById('typeCode').textContent = this.resultType;
+        // typeCode 관련 코드 제거
         
-        // [수정] 유형별 캐릭터 이미지 설정
         const characterImg = document.getElementById('resultCharacter');
         characterImg.src = typeData.characterImage;
         characterImg.alt = typeData.nickname;
         
-        // 이미지 로드 에러 처리 (폴백)
         characterImg.onerror = () => {
             console.warn(`캐릭터 이미지 로드 실패: ${typeData.characterImage}`);
-            // 기본 이미지로 폴백
             characterImg.src = 'images/characters/default-character.png';
         };
         
-        // 설명
         document.getElementById('descriptionText').textContent = typeData.description;
         
         // 강점

@@ -46,7 +46,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem;
+    padding: clamp(0.75rem, 3vw, 1.5rem);
     background: var(--bg-white);
     border-bottom: 2px solid var(--bg-light);
     position: relative;
@@ -64,12 +64,17 @@ body {
     z-index: 10;
 }
 
+.back-button svg {
+    width: clamp(20px, 5vw, 24px);
+    height: clamp(20px, 5vw, 24px);
+}
+
 .back-button:hover {
     transform: scale(1.1);
 }
 
 .logo {
-    height: 40px;
+    height: clamp(32px, 7vw, 40px);
     width: auto;
     position: absolute;
     left: 50%;
@@ -79,22 +84,22 @@ body {
 /* 결과 컨텐츠 */
 .result-content {
     flex: 1;
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
     overflow-y: auto;
 }
 
 /* 인사 섹션 */
 .greeting-section {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 
 .greeting-badge {
     display: inline-block;
     background: linear-gradient(135deg, var(--bg-cream) 0%, #FFF5CC 100%);
-    padding: 0.75rem 1.5rem;
-    border-radius: 20px;
-    font-size: 1.1rem;
+    padding: clamp(0.6rem, 2vw, 0.75rem) clamp(1rem, 3.5vw, 1.5rem);
+    border-radius: clamp(16px, 4vw, 20px);
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
     font-weight: 700;
     color: var(--text-dark);
     border: 2px solid var(--accent-yellow);
@@ -103,20 +108,20 @@ body {
 /* 결과 카드 */
 .result-card {
     background: linear-gradient(135deg, #FFF9E6 0%, #FFFBF0 100%);
-    border-radius: 20px;
-    padding: 2rem 1.5rem;
-    margin-bottom: 1.5rem;
+    border-radius: clamp(16px, 4vw, 20px);
+    padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
     text-align: center;
     box-shadow: var(--shadow-md);
     border: 3px solid var(--accent-yellow);
 }
 
 .character-section {
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.75rem, 2.5vw, 1rem);
 }
 
 .result-character {
-    width: clamp(120px, 40vw, 180px);
+    width: clamp(100px, 30vw, 180px);
     height: auto;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
     animation: bounce 2s ease-in-out infinite;
@@ -132,15 +137,15 @@ body {
 }
 
 .type-info {
-    margin-top: 1rem;
+    margin-top: clamp(0.75rem, 2.5vw, 1rem);
 }
 
 .type-header {
-    margin-bottom: 0.75rem;
+    margin-bottom: clamp(0.5rem, 2vw, 0.75rem);
 }
 
 .type-title {
-    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
     font-weight: 900;
     color: var(--text-dark);
     line-height: 1.3;
@@ -150,16 +155,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: clamp(0.5rem, 2vw, 0.75rem);
     flex-wrap: wrap;
 }
 
 .type-badge {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 12px;
-    font-size: 1.1rem;
+    padding: clamp(0.5rem, 2vw, 0.6rem) clamp(0.9rem, 3vw, 1.2rem);
+    border-radius: clamp(10px, 2.5vw, 12px);
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
     font-weight: 700;
     box-shadow: var(--shadow-sm);
 }
@@ -167,9 +172,9 @@ body {
 .type-code {
     background: white;
     color: var(--primary-blue);
-    padding: 0.6rem 1rem;
-    border-radius: 12px;
-    font-size: 1.1rem;
+    padding: clamp(0.5rem, 2vw, 0.6rem) clamp(0.8rem, 2.5vw, 1rem);
+    border-radius: clamp(10px, 2.5vw, 12px);
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
     font-weight: 900;
     border: 2px solid var(--primary-blue);
     letter-spacing: 2px;
@@ -178,30 +183,30 @@ body {
 /* 설명 섹션 */
 .description-section {
     background: var(--bg-light);
-    padding: 1.5rem;
-    border-radius: 16px;
-    margin-bottom: 1.5rem;
+    padding: clamp(1.25rem, 3.5vw, 1.75rem);
+    border-radius: clamp(12px, 3vw, 16px);
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 
 .section-header {
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.75rem, 2.5vw, 1rem);
 }
 
 .section-header h2 {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 0.25rem;
 }
 
 .section-subtitle {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     color: var(--text-gray);
     font-weight: 400;
 }
 
 .description-text {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.8vw, 1.05rem);
     line-height: 1.7;
     color: var(--text-gray);
 }
@@ -210,13 +215,13 @@ body {
 .traits-section {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: clamp(0.75rem, 2.5vw, 1rem);
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 
 .trait-card {
-    padding: 1.25rem;
-    border-radius: 12px;
+    padding: clamp(1rem, 3vw, 1.25rem);
+    border-radius: clamp(10px, 2.5vw, 12px);
     box-shadow: var(--shadow-sm);
 }
 
@@ -231,10 +236,10 @@ body {
 }
 
 .trait-title {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 3vw, 1.1rem);
     font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: 0.75rem;
+    margin-bottom: clamp(0.5rem, 2vw, 0.75rem);
 }
 
 .trait-list {
@@ -243,12 +248,12 @@ body {
 }
 
 .trait-list li {
-    padding: 0.5rem 0;
+    padding: clamp(0.4rem, 1.5vw, 0.5rem) 0;
     color: var(--text-gray);
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
     line-height: 1.5;
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: clamp(1.25rem, 3.5vw, 1.5rem);
 }
 
 .strengths-card .trait-list li::before {
@@ -269,14 +274,14 @@ body {
 
 /* 프로그램 섹션 */
 .programs-section {
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1.5rem, 4vw, 2rem);
 }
 
 .program-card {
     background: var(--bg-white);
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
+    border-radius: clamp(12px, 3vw, 16px);
+    padding: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: clamp(0.75rem, 2.5vw, 1rem);
     box-shadow: var(--shadow-md);
     border: 2px solid var(--border-color);
     transition: all 0.3s ease;
@@ -292,31 +297,30 @@ body {
     background: linear-gradient(135deg, #F0F7FF 0%, #E3F2FD 100%);
 }
 
-.approach-program {
-    border-color: var(--accent-orange);
-}
-
-.avoidance-program {
-    border-color: var(--accent-green);
+.alternative-program {
+    border-color: #9C27B0;
+    background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
 }
 
 .program-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.75rem;
+    margin-bottom: clamp(0.5rem, 2vw, 0.75rem);
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .program-header h3 {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 3vw, 1.1rem);
     font-weight: 700;
     color: var(--text-dark);
 }
 
 .program-badge {
-    padding: 0.3rem 0.75rem;
-    border-radius: 8px;
-    font-size: 0.75rem;
+    padding: clamp(0.25rem, 1vw, 0.3rem) clamp(0.6rem, 2vw, 0.75rem);
+    border-radius: clamp(6px, 1.5vw, 8px);
+    font-size: clamp(0.7rem, 2vw, 0.75rem);
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -326,20 +330,15 @@ body {
     color: white;
 }
 
-.program-badge.challenge {
-    background: var(--accent-orange);
-    color: white;
-}
-
-.program-badge.safe {
-    background: var(--accent-green);
+.program-badge.alternative {
+    background: #9C27B0;
     color: white;
 }
 
 .program-desc {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     color: var(--text-gray);
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.75rem, 2.5vw, 1rem);
     font-style: italic;
 }
 
@@ -349,13 +348,13 @@ body {
 }
 
 .program-list li {
-    padding: 0.6rem 0;
+    padding: clamp(0.5rem, 1.5vw, 0.6rem) 0;
     color: var(--text-gray);
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
     line-height: 1.5;
     border-bottom: 1px solid var(--border-color);
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: clamp(1.25rem, 3.5vw, 1.5rem);
 }
 
 .program-list li:last-child {
@@ -368,32 +367,37 @@ body {
     left: 0;
     color: var(--primary-blue);
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
 }
 
 /* 액션 섹션 */
 .action-section {
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1.5rem, 4vw, 2rem);
 }
 
 .btn-primary {
     width: 100%;
-    padding: 1.2rem 1.5rem;
+    padding: clamp(1rem, 3vw, 1.2rem) clamp(1.25rem, 3.5vw, 1.5rem);
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     color: white;
     border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
+    border-radius: clamp(10px, 2.5vw, 12px);
+    font-size: clamp(1rem, 3vw, 1.1rem);
     font-weight: 700;
     font-family: 'Noto Sans KR', sans-serif;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: clamp(0.4rem, 1.5vw, 0.5rem);
     box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
-    margin-bottom: 0.75rem;
+    margin-bottom: clamp(0.6rem, 2vw, 0.75rem);
+}
+
+.btn-primary svg {
+    width: clamp(16px, 4vw, 20px);
+    height: clamp(16px, 4vw, 20px);
 }
 
 .btn-primary:hover {
@@ -403,31 +407,115 @@ body {
 
 .secondary-buttons {
     display: flex;
-    gap: 0.75rem;
+    gap: clamp(0.6rem, 2vw, 0.75rem);
 }
 
 .btn-secondary {
     flex: 1;
-    padding: 1rem;
+    padding: clamp(0.85rem, 2.5vw, 1rem);
     background: white;
     color: var(--text-dark);
     border: 2px solid var(--border-color);
-    border-radius: 12px;
-    font-size: 0.95rem;
+    border-radius: clamp(10px, 2.5vw, 12px);
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
     font-weight: 600;
     font-family: 'Noto Sans KR', sans-serif;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: clamp(0.4rem, 1.5vw, 0.5rem);
     transition: all 0.3s ease;
+}
+
+.btn-secondary svg {
+    width: clamp(14px, 3.5vw, 18px);
+    height: clamp(14px, 3.5vw, 18px);
 }
 
 .btn-secondary:hover {
     background: var(--bg-light);
     border-color: var(--primary-blue);
     transform: translateY(-2px);
+}
+
+/* 스크린샷 로딩 오버레이 */
+.screenshot-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-content {
+    background: white;
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border-radius: clamp(12px, 3vw, 16px);
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.spinner {
+    width: clamp(40px, 10vw, 50px);
+    height: clamp(40px, 10vw, 50px);
+    margin: 0 auto clamp(0.75rem, 2.5vw, 1rem);
+    border: 4px solid var(--border-color);
+    border-top-color: var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-content p {
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* 캡처 시 버튼 숨기기 */
+.capturing .action-section {
+    display: none !important;
+}
+
+.capturing .header .back-button {
+    display: none !important;
+}
+
+/* 작은 모바일 추가 최적화 */
+@media (max-width: 480px) {
+    .result-character {
+        width: clamp(90px, 28vw, 140px);
+    }
+}
+
+@media (max-width: 375px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .container {
+        min-height: calc(100vh - 1rem);
+    }
+    
+    .result-content {
+        padding: 0.75rem;
+    }
+    
+    .result-character {
+        width: clamp(80px, 25vw, 120px);
+    }
 }
 
 /* 태블릿 이상 */
@@ -454,6 +542,10 @@ body {
     
     .traits-section {
         grid-template-columns: 1fr 1fr;
+    }
+    
+    .result-character {
+        width: clamp(140px, 30vw, 200px);
     }
 }
 
@@ -486,29 +578,3 @@ body {
         transition: none !important;
     }
 }
-
-/* 설명 섹션 - 더 넓은 공간 */
-.description-section {
-    background: var(--bg-light);
-    padding: 1.75rem;
-    border-radius: 16px;
-    margin-bottom: 1.5rem;
-}
-
-.description-text {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--text-gray);
-}
-
-/* 대안 추천 프로그램 (기존 회피 추천) */
-.alternative-program {
-    border-color: #9C27B0;
-    background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
-}
-
-.program-badge.alternative {
-    background: #9C27B0;
-    color: white;
-}
-
