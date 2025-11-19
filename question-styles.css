@@ -261,3 +261,54 @@ body {
     margin-right: 0.5rem;
     font-size: 1.2rem;
 }
+
+/* 이미지 로딩 상태 */
+.question-image {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    min-height: 250px; /* 로딩 중 레이아웃 시프트 방지 */
+}
+
+.question-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.question-image img.loading {
+    opacity: 0.5;
+}
+
+/* 로딩 스피너 (선택적) */
+.question-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.question-image:has(img.loading)::before {
+    opacity: 1;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

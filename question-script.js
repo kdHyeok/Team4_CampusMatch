@@ -1,8 +1,7 @@
-// 간단한 압축 인코딩/디코딩 클래스
+// URL 파라미터 인코딩/디코딩 함수
 class CompactEncoder {
     // 15개 답변을 비트로 압축 (각 답변은 0 또는 1)
     static encode(answers) {
-        // 15개 답변을 이진 문자열로 변환
         const mapping = {
             'S': '0', 'I': '1',
             'D': '0', 'W': '1',
@@ -14,8 +13,7 @@ class CompactEncoder {
             binaryStr += mapping[answer] || '0';
         });
         
-        // 이진 문자열을 16진수로 변환 (더 짧음)
-        let hex = parseInt(binaryStr, 2).toString(36); // 36진수 사용 (0-9, a-z)
+        let hex = parseInt(binaryStr, 2).toString(36);
         return hex;
     }
     
@@ -23,13 +21,9 @@ class CompactEncoder {
         if (!encoded) return [];
         
         try {
-            // 36진수를 이진 문자열로 변환
             let binaryStr = parseInt(encoded, 36).toString(2);
-            
-            // 15자리로 패딩
             binaryStr = binaryStr.padStart(15, '0');
             
-            // 각 질문의 타입에 맞게 변환
             const types = ['S/I', 'O/P', 'D/W', 'S/I', 'D/W', 'S/I', 'O/P', 'S/I', 'D/W', 'O/P', 'O/P', 'D/W', 'S/I', 'O/P', 'D/W'];
             const answers = [];
             
@@ -60,6 +54,7 @@ class QuestionManager {
         this.currentQuestion = 1;
         this.answers = [];
         this.userName = '';
+        this.preloadedImages = new Set(); // 프리로드된 이미지 추적
         this.init();
     }
     
@@ -75,9 +70,61 @@ class QuestionManager {
         this.currentQuestion = questionNum;
         this.answers = CompactEncoder.decode(encodedAnswers);
         
+        // 첫 로드 시 모든 이미지 프리로드 시작
+        this.preloadAllImages();
+        
         this.loadQuestion();
         this.updateProgress();
         this.setupEventListeners();
+    }
+    
+    // [새로 추가] 모든 질문 이미지 프리로드
+    preloadAllImages() {
+        questionsData.forEach((question, index) => {
+            if (question.image && !this.preloadedImages.has(question.image)) {
+                // 현재 질문 이미지는 즉시 로드, 나머지는 우선순위 낮게
+                const priority = (index + 1) === this.currentQuestion ? 'high' : 'low';
+                this.preloadImage(question.image, priority);
+            }
+        });
+    }
+    
+    // [새로 추가] 개별 이미지 프리로드 함수
+    preloadImage(src, priority = 'low') {
+        if (this.preloadedImages.has(src)) {
+            return; // 이미 프리로드됨
+        }
+        
+        const img = new Image();
+        
+        // 프리로드 완료 이벤트
+        img.onload = () => {
+            this.preloadedImages.add(src);
+            console.log(`✓ Preloaded: ${src}`);
+        };
+        
+        img.onerror = () => {
+            console.error(`✗ Failed to preload: ${src}`);
+        };
+        
+        // fetchpriority 속성 설정 (현대 브라우저)
+        if ('fetchPriority' in img) {
+            img.fetchPriority = priority;
+        }
+        
+        img.src = src; // 이미지 다운로드 시작
+    }
+    
+    // [새로 추가] 다음 질문 이미지 우선 프리로드
+    preloadNextImage() {
+        const nextQuestionId = this.currentQuestion + 1;
+        
+        if (nextQuestionId <= 15) {
+            const nextQuestion = questionsData[nextQuestionId - 1];
+            if (nextQuestion && nextQuestion.image) {
+                this.preloadImage(nextQuestion.image, 'high');
+            }
+        }
     }
     
     loadQuestion() {
@@ -86,9 +133,18 @@ class QuestionManager {
         // 공제이 메시지 표시
         document.getElementById('gongjayMessage').textContent = question.gongjay;
         
+        // 이미지 로딩 상태 표시 (선택적)
+        const imgElement = document.getElementById('questionImg');
+        imgElement.classList.add('loading'); // CSS에서 정의 가능
+        
         // 질문 이미지 표시
-        document.getElementById('questionImg').src = question.image;
-        document.getElementById('questionImg').alt = question.gongjay;
+        imgElement.src = question.image;
+        imgElement.alt = question.gongjay;
+        
+        // 이미지 로드 완료 시 로딩 상태 제거
+        imgElement.onload = () => {
+            imgElement.classList.remove('loading');
+        };
         
         // 선택지 설정
         const choiceA = document.getElementById('choiceA');
@@ -99,6 +155,9 @@ class QuestionManager {
         
         choiceB.querySelector('.choice-text').textContent = question.choiceB.text;
         choiceB.dataset.value = question.choiceB.value;
+        
+        // ★ 핵심: 현재 질문 로딩이 끝나면 다음 질문 이미지 우선 프리로드
+        this.preloadNextImage();
     }
     
     updateProgress() {
@@ -150,7 +209,7 @@ class QuestionManager {
     
     goBack() {
         if (this.currentQuestion === 1) {
-            // 첫 페이지면 시작 페이지로
+            // 첫 페이지면 인트로 페이지로
             window.location.href = 'intro.html';
         } else {
             // 이전 질문으로
@@ -187,9 +246,9 @@ class QuestionManager {
         });
         
         // 각 카테고리별 최다 선택 찾기 (3개 차원)
-        const outcome = counts['O'] >= counts['P'] ? 'O' : 'P';  // 성과 vs 성장
-        const depth = counts['D'] >= counts['W'] ? 'D' : 'W';    // 전공 vs 경험
-        const social = counts['S'] >= counts['I'] ? 'S' : 'I';   // 관계 vs 개인
+        const outcome = counts['O'] >= counts['P'] ? 'O' : 'P';
+        const depth = counts['D'] >= counts['W'] ? 'D' : 'W';
+        const social = counts['S'] >= counts['I'] ? 'S' : 'I';
         
         // 결과 타입 조합 (ODS, ODI, OWS, OWI, PDS, PDI, PWS, PWI)
         return `${outcome}${depth}${social}`;
