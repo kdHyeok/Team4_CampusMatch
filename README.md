@@ -1,8 +1,8 @@
 # 🎓 대학생 맞춤형 공지/프로그램 추천 서비스, [프로젝트 이름]
 
-![Badge](https://img.shields.io/badge/Python-3.9-blue?logo=python&logoColor=white)
-![Badge](https://img.shields.io/badge/Flask-Web-lightgrey?logo=flask&logoColor=white)
-![Badge](https://img.shields.io/badge/HTML5-CSS3-orange)
+![Badge](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![Badge](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![Badge](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
 > **"나에게 딱 맞는 대외활동과 교내 공지, 이제 찾아헤매지 마세요."** > 학생의 성향을 분석하여 최적의 대학 생활 로드맵을 제시하는 웹 서비스입니다.
 
@@ -70,10 +70,10 @@ _어떤 환경에서 활동하는 것을 선호하는가?_
 
 ## 🛠️ 기술 스택 (Tech Stack)
 
-* **Frontend**: HTML5, CSS3, JavaScript (Vanilla / jQuery)
-* **Backend**: Python (Flask)
-* **Database**: SQLite / MySQL (프로젝트 상황에 맞게 기재)
-* **Deployment**: (배포 환경 기재, 예: AWS, GoormIDE, Localhost)
+* **Frontend**: HTML5, CSS3, JavaScript
+* **Backend**: 미 구현 (추후, DB 연결과 함께 개발 예정)
+* **Database**: 미 구현 (현재는 초기 테스트단계로 필요한 전달 변수들은 url에 삽입하여 전달함.)
+* **Deployment**: Localhost
 
 <br/>
 
@@ -81,5 +81,5 @@ _어떤 환경에서 활동하는 것을 선호하는가?_
 
 1. **리포지토리 클론**
    ```bash
-   git clone [https://github.com/](https://github.com/)[사용자ID]/[저장소이름].git
-   cd [저장소이름]
+   git clone https://github.com/kdHyeok/Team4_CampusMatch.git
+   cd Team4_CampusMatch
