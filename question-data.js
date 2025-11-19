@@ -59,7 +59,7 @@ const questionsData = [
     {
         id: 5,
         type: 'O/P',
-        image: 'images/questions/q5-meeting.png',
+        image: 'images/questions/q5-meeting.webp',
         gongjay: '드디어 개강총회! 처음으로 과 동기, 선배들과 술을 마시게 됐는데, 앞에 앉은 선배가 궁금한 거 있으면 뭐든지 물어보래. 넌 어떤 걸 물어볼래?',
         choiceA: {
             text: '이때다! "선배님, 족보 좀..." 꿀팁, 학점 정보, 스펙 쌓는법 같이 정보 위주로 물어본다.',
@@ -73,7 +73,7 @@ const questionsData = [
     {
         id: 6,
         type: 'D/W',
-        image: 'images/questions/q6-club.png',
+        image: 'images/questions/q6-club.webp',
         gongjay: '학생회관 앞이 시끌벅적! 동아리 박람회구나. 넌 어디부터 가볼래?',
         choiceA: {
             text: '무조건 학술 동아리나 공모전 동아리! 내 전공에 도움 될만한 곳으로 들어갈래.',
@@ -87,7 +87,7 @@ const questionsData = [
     {
         id: 7,
         type: 'S/I',
-        image: 'images/questions/q7-study.png',
+        image: 'images/questions/q7-study.webp',
         gongjay: '첫 중간고사 D-7! 공부 시작해야 하는데... 넌 어떤 스타일이야?',
         choiceA: {
             text: '무조건 도서관 1인석. 혼자 공부하는 게 좋아. 초집중 모드!',
@@ -101,7 +101,7 @@ const questionsData = [
     {
         id: 8,
         type: 'O/P',
-        image: 'images/questions/q8-festival.png',
+        image: 'images/questions/q8-festival.webp',
         gongjay: '드디어 봄 축제! 친구가 "같이 놀러 가자!"고 하는데, 마침 내일 전공 중간고사가 있어. 어떡할래?',
         choiceA: {
             text: '미안, 나 내일 시험이라... 오늘은 복습 좀 더 하고 일찍 자야겠어.',
@@ -115,7 +115,7 @@ const questionsData = [
     {
         id: 9,
         type: 'D/W',
-        image: 'images/questions/q9-seminar.png',
+        image: 'images/questions/q9-seminar.webp',
         gongjay: '학교 홈페이지에 "신입생 대상 비전공자 코딩 특강" 공지가 떴어.',
         choiceA: {
             text: '내 전공이랑은 별로 상관없네. 그 시간에 과 톡방에 올라온 전공관련 특강 들으러 갈래.',
@@ -129,7 +129,7 @@ const questionsData = [
     {
         id: 10,
         type: 'S/I',
-        image: 'images/questions/q10-team.png',
+        image: 'images/questions/q10-team.webp',
         gongjay: '악명 높은 조별과제... 교수님이 "자, 4인 1조!"를 외쳤어. 가위바위보에 이긴 너는 2개의 역할 중 뭘 할래?',
         choiceA: {
             text: '자료 조사는 제가 맡을게요. 제가 혼자서 깔끔하게 정리할 수 있어요!',
@@ -143,7 +143,7 @@ const questionsData = [
     {
         id: 11,
         type: 'S/I',
-        image: 'images/questions/q11-meeting2.png',
+        image: 'images/questions/q11-meeting2.webp',
         gongjay: '조별과제 회의! 팀원들이 "우리 대면으로 만나서 회의할까? 아니면 단톡으로 할까?" 물어봐. 넌 어떤 게 편해?',
         choiceA: {
             text: '단톡이나 줌으로 하면 안 돼? 굳이 만나는 건 귀찮아...',
@@ -157,7 +157,7 @@ const questionsData = [
     {
         id: 12,
         type: 'O/P',
-        image: 'images/questions/q12-evaluation.png',
+        image: 'images/questions/q12-evaluation.webp',
         gongjay: '조별과제가 끝나고 "팀원 기여도 평가"를 제출해야 해. 솔직히 한 명이 거의 안 했는데... 어떻게 평가할래?',
         choiceA: {
             text: '정확하게 평가해야지. 안 한 사람은 낮은 점수 줘야 공평해. 우리 점수에도 영향 있어.',
@@ -171,7 +171,7 @@ const questionsData = [
     {
         id: 13,
         type: 'O/P',
-        image: 'images/questions/q13-grade.png',
+        image: 'images/questions/q13-grade.webp',
         gongjay: '교수님께서 기말고사 성적을 공개하시면서, 틀린 문제가 궁금하면 수업 끝나고 찾아오라고 하신다.',
         choiceA: {
             text: '생각하던 점수보다 더 낮게 나왔네.. 뭐가 문제였지? 틀린 부분을 여쭤보러 간다.',
@@ -185,7 +185,7 @@ const questionsData = [
     {
         id: 14,
         type: 'D/W',
-        image: 'images/questions/q14-certificate.png',
+        image: 'images/questions/q14-certificate.webp',
         gongjay: '방학 동안 자격증을 하나 따려고 하는데... 뭘 딸까?',
         choiceA: {
             text: '내 전공과 직접 관련된 자격증! (예: 컴활, 리눅스마스터2급, 검색광고마케터 등)',
@@ -199,7 +199,7 @@ const questionsData = [
     {
         id: 15,
         type: 'D/W',
-        image: 'images/questions/q15-program.png',
+        image: 'images/questions/q15-program.webp',
         gongjay: '학교 홈페이지에 두 가지 공지가 올라왔어! 둘 다 좋아 보이는데... 넌 어떤 걸 신청할래?',
         choiceA: {
             text: '"전공 관련 체험형 인턴십" – 교수님 연구실이나 관련 기업에서 실무 경험을 쌓을 수 있대!',
