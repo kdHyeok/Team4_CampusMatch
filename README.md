@@ -1,4 +1,4 @@
-# 🎓 대학생 맞춤형 공지/프로그램 추천 서비스, **[ 캠퍼스 매치 ]**
+# 🎓 대학생 맞춤형 공지/프로그램 추천 서비스, **_"캠퍼스 매치"_**
 
 ![Badge](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![Badge](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
